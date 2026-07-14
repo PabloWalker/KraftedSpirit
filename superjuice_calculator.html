@@ -10,7 +10,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+ 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -20,7 +20,7 @@
             justify-content: center;
             padding: 20px;
         }
-
+ 
         .container {
             background: white;
             border-radius: 12px;
@@ -29,23 +29,23 @@
             max-width: 600px;
             width: 100%;
         }
-
+ 
         h1 {
             font-size: 28px;
             margin-bottom: 8px;
             color: #333;
         }
-
+ 
         .subtitle {
             color: #666;
             font-size: 14px;
             margin-bottom: 30px;
         }
-
+ 
         .form-group {
             margin-bottom: 25px;
         }
-
+ 
         label {
             display: block;
             font-weight: 600;
@@ -53,7 +53,7 @@
             color: #333;
             font-size: 14px;
         }
-
+ 
         select, input {
             width: 100%;
             padding: 12px;
@@ -63,30 +63,30 @@
             font-family: inherit;
             transition: border-color 0.3s;
         }
-
+ 
         select:focus, input:focus {
             outline: none;
             border-color: #667eea;
         }
-
+ 
         input[type="number"] {
             font-size: 18px;
         }
-
+ 
         .results {
             background: #f8f9fa;
             border-radius: 8px;
             padding: 25px;
             margin-top: 30px;
         }
-
+ 
         .results-title {
             font-weight: 600;
             color: #333;
             margin-bottom: 20px;
             font-size: 16px;
         }
-
+ 
         .ingredient {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -94,13 +94,13 @@
             margin-bottom: 12px;
             align-items: center;
         }
-
+ 
         .ingredient-name {
             font-weight: 500;
             color: #555;
             font-size: 14px;
         }
-
+ 
         .ingredient-amount {
             background: white;
             padding: 10px 12px;
@@ -111,16 +111,16 @@
             color: #667eea;
             font-size: 15px;
         }
-
+ 
         .ingredient-amount.zero {
             color: #999;
             font-weight: 400;
         }
-
+ 
         .hidden {
             display: none;
         }
-
+ 
         .info {
             background: #e8f4f8;
             border-left: 4px solid #667eea;
@@ -130,7 +130,7 @@
             color: #555;
             margin-bottom: 20px;
         }
-
+ 
         .method {
             background: #faf9f7;
             border-radius: 8px;
@@ -138,26 +138,26 @@
             margin-top: 30px;
             border: 1px solid #e8e8e8;
         }
-
+ 
         .method-title {
             font-weight: 600;
             color: #333;
             margin-bottom: 15px;
             font-size: 16px;
         }
-
+ 
         .method-text {
             line-height: 1.7;
             color: #555;
             font-size: 14px;
         }
-
+ 
         .button-group {
             display: flex;
             gap: 12px;
             margin-top: 30px;
         }
-
+ 
         button {
             flex: 1;
             padding: 12px 20px;
@@ -169,47 +169,47 @@
             transition: all 0.3s;
             font-family: inherit;
         }
-
+ 
         .btn-pdf {
             background: #667eea;
             color: white;
         }
-
+ 
         .btn-pdf:hover {
             background: #5568d3;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
-
+ 
         .btn-pdf:active {
             transform: translateY(0);
         }
-
+ 
         .btn-share {
             background: #48bb78;
             color: white;
         }
-
+ 
         .btn-share:hover {
             background: #38a169;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(72, 187, 120, 0.4);
         }
-
+ 
         .btn-share:active {
             transform: translateY(0);
         }
-
+ 
         .btn-share.hidden-mobile {
             display: none;
         }
-
+ 
         @media (max-width: 600px) {
             .btn-share.hidden-mobile {
                 display: block;
             }
         }
-
+ 
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -218,12 +218,12 @@
             font-size: 12px;
             color: #999;
         }
-
+ 
         .footer a {
             color: #667eea;
             text-decoration: none;
         }
-
+ 
         .footer a:hover {
             text-decoration: underline;
         }
@@ -233,11 +233,11 @@
     <div class="container">
         <h1>Superjuice Calculator</h1>
         <p class="subtitle">Calculate ingredient quantities by peel weight</p>
-
+ 
         <div class="info">
-            All measurements in grams. Select a recipe and enter the weight of peels to calculate ingredient quantities.
+            All measurements in grams. Peel all fruit first, minimising the amount of white pith where possible. Select a recipe and enter the weight of peels used to calculate ingredient quantities.
         </div>
-
+ 
         <div class="form-group">
             <label for="recipe">Select Recipe</label>
             <select id="recipe" onchange="updateResults()">
@@ -249,58 +249,58 @@
                 <option value="Kumquat">Kumquat</option>
             </select>
         </div>
-
+ 
         <div class="form-group">
             <label for="peels">Weight of Peels (grams)</label>
             <input type="number" id="peels" placeholder="Enter weight in grams" min="0" step="0.1" oninput="updateResults()">
         </div>
-
+ 
         <div class="results hidden" id="results">
             <div class="results-title">Ingredient Quantities</div>
-
+ 
             <div class="ingredient" id="citric-row">
                 <div class="ingredient-name">Citric Acid</div>
                 <div class="ingredient-amount" id="citric">0g</div>
             </div>
-
+ 
             <div class="ingredient" id="malic-row">
                 <div class="ingredient-name">Malic Acid</div>
                 <div class="ingredient-amount" id="malic">0g</div>
             </div>
-
+ 
             <div class="ingredient" id="ascorbic-row">
                 <div class="ingredient-name">Ascorbic Acid</div>
                 <div class="ingredient-amount" id="ascorbic">0g</div>
             </div>
-
+ 
             <div class="ingredient" id="msg-row">
                 <div class="ingredient-name">MSG</div>
                 <div class="ingredient-amount" id="msg">0g</div>
             </div>
-
+ 
             <div class="ingredient">
                 <div class="ingredient-name">Water</div>
                 <div class="ingredient-amount" id="water">0g</div>
             </div>
         </div>
-
+ 
         <div class="method">
             <div class="method-title">Method</div>
             <div class="method-text">
                 Add Peels, & acids to a bowl and stir to combine. Let sit for at least one hour. Add Water to the bowl, stir and add to a blender. Blend for 10 seconds. Strain through fine mesh into a clean container. Juice the peeled fruit used and strain into the container, shake gently and store in the fridge for ~2 weeks.
             </div>
         </div>
-
+ 
         <div class="button-group">
             <button class="btn-pdf" onclick="savePDF()">Save as PDF</button>
             <button class="btn-share" id="shareBtn" onclick="shareRecipe()" style="display: none;">Share</button>
         </div>
-
+ 
         <div class="footer">
             <p>© 2026 Krafted Spirit. <a href="https://www.kraftedspirit.com/businessservices" target="_blank">www.kraftedspirit.com/businessservices</a></p>
         </div>
     </div>
-
+ 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         const recipes = {
@@ -310,19 +310,19 @@
             Grapefruit: { Peels: 1, Citric: 0.8, Malic: 0.2, Ascorbic: 0, MSG: 0.33, Water: 16.7 },
             Kumquat: { Peels: 1, Citric: 0.25, Malic: 0, Ascorbic: 0.002, MSG: 0, Water: 4.2 }
         };
-
+ 
         function updateResults() {
             const recipe = document.getElementById('recipe').value;
             const peels = parseFloat(document.getElementById('peels').value) || 0;
-
+ 
             if (!recipe || peels <= 0) {
                 document.getElementById('results').classList.add('hidden');
                 return;
             }
-
+ 
             const ratios = recipes[recipe];
             const multiplier = peels / ratios.Peels;
-
+ 
             // Calculate quantities
             const quantities = {
                 citric: (ratios.Citric * multiplier).toFixed(2),
@@ -331,26 +331,26 @@
                 msg: (ratios.MSG * multiplier).toFixed(2),
                 water: (ratios.Water * multiplier).toFixed(2)
             };
-
+ 
             // Update display
             updateElement('citric', quantities.citric, ratios.Citric);
             updateElement('malic', quantities.malic, ratios.Malic);
             updateElement('ascorbic', quantities.ascorbic, ratios.Ascorbic);
             updateElement('msg', quantities.msg, ratios.MSG);
-
+ 
             const waterEl = document.getElementById('water');
             waterEl.textContent = quantities.water + 'g';
             waterEl.classList.remove('zero');
-
+ 
             // Show/hide rows based on whether recipe uses that ingredient
             document.getElementById('citric-row').style.display = ratios.Citric > 0 ? 'grid' : 'none';
             document.getElementById('malic-row').style.display = ratios.Malic > 0 ? 'grid' : 'none';
             document.getElementById('ascorbic-row').style.display = ratios.Ascorbic > 0 ? 'grid' : 'none';
             document.getElementById('msg-row').style.display = ratios.MSG > 0 ? 'grid' : 'none';
-
+ 
             document.getElementById('results').classList.remove('hidden');
         }
-
+ 
         function updateElement(id, value, hasIngredient) {
             const el = document.getElementById(id);
             el.textContent = value + 'g';
@@ -360,16 +360,16 @@
                 el.classList.add('zero');
             }
         }
-
+ 
         function savePDF() {
             const recipe = document.getElementById('recipe').value;
             const peels = document.getElementById('peels').value;
-
+ 
             if (!recipe || !peels) {
                 alert('Please select a recipe and enter peel weight first.');
                 return;
             }
-
+ 
             const element = document.querySelector('.container');
             const opt = {
                 margin: 10,
@@ -378,21 +378,21 @@
                 html2canvas: { scale: 2 },
                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
-
+ 
             html2pdf().set(opt).from(element).save();
         }
-
+ 
         function shareRecipe() {
             const recipe = document.getElementById('recipe').value;
             const peels = document.getElementById('peels').value;
-
+ 
             if (!recipe || !peels) {
                 alert('Please select a recipe and enter peel weight first.');
                 return;
             }
-
+ 
             const shareText = `${recipe} Superjuice Recipe\n\nPeels: ${peels}g\n\nCitric: ${document.getElementById('citric').textContent}\nMalic: ${document.getElementById('malic').textContent}\nAscorbic: ${document.getElementById('ascorbic').textContent}\nMSG: ${document.getElementById('msg').textContent}\nWater: ${document.getElementById('water').textContent}`;
-
+ 
             if (navigator.share) {
                 navigator.share({
                     title: `${recipe} Superjuice`,
@@ -407,7 +407,7 @@
                 }
             }
         }
-
+ 
         function copyToClipboard(text) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(text);
@@ -415,14 +415,14 @@
             }
             return false;
         }
-
+ 
         function isMobileDevice() {
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
             const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
             const isAndroid = /Android/.test(userAgent);
             return isIOS || isAndroid;
         }
-
+ 
         // Show share button only on mobile
         function initializeShareButton() {
             const shareBtn = document.getElementById('shareBtn');
@@ -430,7 +430,7 @@
                 shareBtn.style.display = 'block';
             }
         }
-
+ 
         // Initialize on page load
         window.addEventListener('load', initializeShareButton);
     </script>
